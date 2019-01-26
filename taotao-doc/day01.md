@@ -1,5 +1,5 @@
 
-练习一：
+day01：
   1.技术特点：
     .分布式
     .高并发、集群、负载均衡、高可用
@@ -33,3 +33,8 @@
         git fetch --all  
         git reset --hard origin/master
         git pull
+
+    5.碰到的问题：
+      .github上存在文件和本地不一致，导致不能push
+      强推：git reset --hard origin/master -f
+      或者先pull后push
