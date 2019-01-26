@@ -26,3 +26,10 @@
       4. git remote add origin git@github.com:abcparadise/taotao.git
       5. git pull origin master  
       6. git push -u origin master  
+
+      git pull origin master
+
+      git 强行pull并覆盖本地文件
+        git fetch --all  
+        git reset --hard origin/master
+        git pull
