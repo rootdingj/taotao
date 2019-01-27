@@ -33,6 +33,9 @@
 		<jedis.version>2.7.2</jedis.version>
 		<solrj.version>4.10.3</solrj.version>
 		<lombok.version>1.16.14</lombok.version>
+		<dubbo.version>2.5.3</dubbo.version>
+		<zookeeper.version>3.4.7</zookeeper.version>
+		<zkclient.version>0.1</zkclient.version>
 	</properties>
 
 	<!-- 只定义依赖的版本，并不实际依赖 -->
@@ -187,6 +190,23 @@
 				<artifactId>solr-solrj</artifactId>
 				<version>${solrj.version}</version>
 			</dependency>
+			<!-- dubbo相关 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.sgroschupf</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
