@@ -89,7 +89,7 @@
            bin/zkServer.sh start    // 启动zookeeper
            bin/zkServer.sh status   // 查看zookeeper状态
            // bin/zkServer.sh stop  // 关闭zookeeper
-        8、关闭linux的防火墙
+        8、关闭linux的防火墙/或者阿里云添加安全组规则（开放2181端口）
            systemctl status firewalld  // 查看firewalld状态 dead
            // systemctl stop firewalld // 关闭
            // systemctl start firewalld // 开启防火墙
@@ -113,7 +113,11 @@
 18.商品列表查询-测试
 
 碰到的问题：
-  5.1、maven聚合项目导入project无法正常显示子模块
-       导入maven就OK了
-  5.2、MyBatis Generator踩坑,数据库版本不一致导致的一系列问题
+  1、maven聚合项目导入project无法正常显示子模块
+       导入maven项目就OK了
+  2、MyBatis Generator踩坑,数据库版本不一致导致的一系列问题
       比较快捷、无脑的方法，选择好匹配的版本
+  3、zookeeper安装成功后，但是无法正常使用
+      开放2181端口
+
+  4、 Invalid bound statement (not found): com.dj.taotao.mapper.TbItemMapper.selectByPrimaryKey

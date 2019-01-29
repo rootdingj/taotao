@@ -22,7 +22,7 @@
 	<context:component-scan base-package="com.dj.taotao.controller"/>
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="taotao-manager-web"/>
-	<dubbo:registry protocol="zookeeper" address="172.18.14.158:2181"/>	
+	<dubbo:registry protocol="zookeeper" address="47.106.125.36:2181"/>	
 	<dubbo:reference interface="com.dj.taotao.service.ItemService" id="itemService" />
 
 </beans>        
