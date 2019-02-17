@@ -1,11 +1,15 @@
 package com.dj.taotao.pojo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TbItemCatExample {
-    protected String orderByClause;
+public class TbItemCatExample implements Serializable {
+   
+	private static final long serialVersionUID = 7606394273093792888L;
+
+	protected String orderByClause;
 
     protected boolean distinct;
 

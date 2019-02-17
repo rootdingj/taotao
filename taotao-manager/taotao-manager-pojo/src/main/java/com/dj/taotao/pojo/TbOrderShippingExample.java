@@ -1,11 +1,15 @@
 package com.dj.taotao.pojo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TbOrderShippingExample {
-    protected String orderByClause;
+public class TbOrderShippingExample implements Serializable {
+   
+	private static final long serialVersionUID = 2761629463347890740L;
+
+	protected String orderByClause;
 
     protected boolean distinct;
 

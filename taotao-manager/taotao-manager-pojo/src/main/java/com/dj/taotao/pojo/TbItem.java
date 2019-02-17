@@ -1,115 +1,119 @@
 package com.dj.taotao.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbItem {
-    private Long id;
+public class TbItem implements Serializable {
 
-    private String title;
+	private static final long serialVersionUID = 5754631147357363997L;
 
-    private String sellPoint;
+	private Long id;
 
-    private Long price;
+	private String title;
 
-    private Integer num;
+	private String sellPoint;
 
-    private String barcode;
+	private Long price;
 
-    private String image;
+	private Integer num;
 
-    private Long cid;
+	private String barcode;
 
-    private Byte status;
+	private String image;
 
-    private Date created;
+	private Long cid;
 
-    private Date updated;
+	private Byte status;
 
-    public Long getId() {
-        return id;
-    }
+	private Date created;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	private Date updated;
 
-    public String getTitle() {
-        return title;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getSellPoint() {
-        return sellPoint;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setSellPoint(String sellPoint) {
-        this.sellPoint = sellPoint == null ? null : sellPoint.trim();
-    }
+	public void setTitle(String title) {
+		this.title = title == null ? null : title.trim();
+	}
 
-    public Long getPrice() {
-        return price;
-    }
+	public String getSellPoint() {
+		return sellPoint;
+	}
 
-    public void setPrice(Long price) {
-        this.price = price;
-    }
+	public void setSellPoint(String sellPoint) {
+		this.sellPoint = sellPoint == null ? null : sellPoint.trim();
+	}
 
-    public Integer getNum() {
-        return num;
-    }
+	public Long getPrice() {
+		return price;
+	}
 
-    public void setNum(Integer num) {
-        this.num = num;
-    }
+	public void setPrice(Long price) {
+		this.price = price;
+	}
 
-    public String getBarcode() {
-        return barcode;
-    }
+	public Integer getNum() {
+		return num;
+	}
 
-    public void setBarcode(String barcode) {
-        this.barcode = barcode == null ? null : barcode.trim();
-    }
+	public void setNum(Integer num) {
+		this.num = num;
+	}
 
-    public String getImage() {
-        return image;
-    }
+	public String getBarcode() {
+		return barcode;
+	}
 
-    public void setImage(String image) {
-        this.image = image == null ? null : image.trim();
-    }
+	public void setBarcode(String barcode) {
+		this.barcode = barcode == null ? null : barcode.trim();
+	}
 
-    public Long getCid() {
-        return cid;
-    }
+	public String getImage() {
+		return image;
+	}
 
-    public void setCid(Long cid) {
-        this.cid = cid;
-    }
+	public void setImage(String image) {
+		this.image = image == null ? null : image.trim();
+	}
 
-    public Byte getStatus() {
-        return status;
-    }
+	public Long getCid() {
+		return cid;
+	}
 
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
+	public void setCid(Long cid) {
+		this.cid = cid;
+	}
 
-    public Date getCreated() {
-        return created;
-    }
+	public Byte getStatus() {
+		return status;
+	}
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
+	public void setStatus(Byte status) {
+		this.status = status;
+	}
 
-    public Date getUpdated() {
-        return updated;
-    }
+	public Date getCreated() {
+		return created;
+	}
 
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
 }

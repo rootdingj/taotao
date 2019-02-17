@@ -1,9 +1,13 @@
 package com.dj.taotao.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbItemParamItem {
-    private Long id;
+public class TbItemParamItem implements Serializable {
+    
+	private static final long serialVersionUID = -295157229710842574L;
+
+	private Long id;
 
     private Long itemId;
 

@@ -1,85 +1,89 @@
 package com.dj.taotao.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbContentCategory {
-    private Long id;
+public class TbContentCategory implements Serializable {
+	
+	private static final long serialVersionUID = -8991272300826436956L;
 
-    private Long parentId;
+	private Long id;
 
-    private String name;
+	private Long parentId;
 
-    private Integer status;
+	private String name;
 
-    private Integer sortOrder;
+	private Integer status;
 
-    private Boolean isParent;
+	private Integer sortOrder;
 
-    private Date created;
+	private Boolean isParent;
 
-    private Date updated;
+	private Date created;
 
-    public Long getId() {
-        return id;
-    }
+	private Date updated;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Long getParentId() {
-        return parentId;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
-    }
+	public Long getParentId() {
+		return parentId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public Integer getStatus() {
+		return status;
+	}
 
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
-    }
+	public Integer getSortOrder() {
+		return sortOrder;
+	}
 
-    public Boolean getIsParent() {
-        return isParent;
-    }
+	public void setSortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
+	}
 
-    public void setIsParent(Boolean isParent) {
-        this.isParent = isParent;
-    }
+	public Boolean getIsParent() {
+		return isParent;
+	}
 
-    public Date getCreated() {
-        return created;
-    }
+	public void setIsParent(Boolean isParent) {
+		this.isParent = isParent;
+	}
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
+	public Date getCreated() {
+		return created;
+	}
 
-    public Date getUpdated() {
-        return updated;
-    }
+	public void setCreated(Date created) {
+		this.created = created;
+	}
 
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
+	public Date getUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
 }
