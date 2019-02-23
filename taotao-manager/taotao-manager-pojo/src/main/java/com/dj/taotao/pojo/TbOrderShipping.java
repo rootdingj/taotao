@@ -7,26 +7,59 @@ public class TbOrderShipping implements Serializable {
    
 	private static final long serialVersionUID = 1836497534307954629L;
 
+	/** 
+	* @Fields orderId : 订单ID
+	*/ 
 	private String orderId;
 
+    /** 
+    * @Fields receiverName : 收货人全名
+    */ 
     private String receiverName;
 
+    /** 
+    * @Fields receiverPhone : 固定电话 
+    */ 
     private String receiverPhone;
 
+    /** 
+    * @Fields receiverMobile : 移动电话
+    */ 
     private String receiverMobile;
 
+    /** 
+    * @Fields receiverState : 省份
+    */ 
     private String receiverState;
 
+    /** 
+    * @Fields receiverCity : 城市
+    */ 
     private String receiverCity;
 
+    /** 
+    * @Fields receiverDistrict : 区/县
+    */ 
     private String receiverDistrict;
 
+    /** 
+    * @Fields receiverAddress : 收货地址，如：xx路xx号
+    */ 
     private String receiverAddress;
 
+    /** 
+    * @Fields receiverZip : 邮政编码,如：310001
+    */ 
     private String receiverZip;
 
+    /** 
+    * @Fields created : 创建时间
+    */ 
     private Date created;
 
+    /** 
+    * @Fields updated : 更新时间
+    */ 
     private Date updated;
 
     public String getOrderId() {

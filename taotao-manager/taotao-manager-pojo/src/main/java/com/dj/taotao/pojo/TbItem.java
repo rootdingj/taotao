@@ -3,30 +3,69 @@ package com.dj.taotao.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @ClassName: TbItem
+ * @Description: 商品实体
+ * @author Steven
+ * @date 2019年2月23日
+ */
 public class TbItem implements Serializable {
 
 	private static final long serialVersionUID = 5754631147357363997L;
 
+	/**
+	 * @Fields id : 商品id、商品编号
+	 */
 	private Long id;
 
+	/**
+	 * @Fields title : 商品标题
+	 */
 	private String title;
 
+	/**
+	 * @Fields sellPoint : 商品卖点
+	 */
 	private String sellPoint;
 
+	/**
+	 * @Fields price : 商品价格(单位：分)
+	 */
 	private Long price;
 
+	/**
+	 * @Fields num : 库存数量
+	 */
 	private Integer num;
 
+	/**
+	 * @Fields barcode : 商品条形码
+	 */
 	private String barcode;
 
+	/**
+	 * @Fields image : 商品图片
+	 */
 	private String image;
 
+	/**
+	 * @Fields cid : 所属类目，叶子类目
+	 */
 	private Long cid;
 
+	/**
+	 * @Fields status : 商品状态(1:正常，2:下架，3:删除)
+	 */
 	private Byte status;
 
+	/**
+	 * @Fields created : 创建时间
+	 */
 	private Date created;
 
+	/**
+	 * @Fields updated : 更新时间
+	 */
 	private Date updated;
 
 	public Long getId() {

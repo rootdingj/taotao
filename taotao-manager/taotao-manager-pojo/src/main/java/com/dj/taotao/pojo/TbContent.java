@@ -3,117 +3,154 @@ package com.dj.taotao.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+/** 
+* @ClassName: TbContent 
+* @Description: 内容 
+* @author Steven 
+* @date 2019年2月23日  
+*/
 public class TbContent implements Serializable {
-    
+
 	private static final long serialVersionUID = -7373913197004075806L;
 
 	private Long id;
 
-    private Long categoryId;
+	/**
+	 * @Fields categoryId : 内容类目ID
+	 */
+	private Long categoryId;
 
-    private String title;
+	/**
+	 * @Fields title : 内容标题
+	 */
+	private String title;
 
-    private String subTitle;
+	/**
+	 * @Fields subTitle : 子标题
+	 */
+	private String subTitle;
 
-    private String titleDesc;
+	/**
+	 * @Fields titleDesc : 标题描述
+	 */
+	private String titleDesc;
 
-    private String url;
+	/**
+	 * @Fields url : 链接
+	 */
+	private String url;
 
-    private String pic;
+	/**
+	 * @Fields pic : 图片绝对路径
+	 */
+	private String pic;
 
-    private String pic2;
+	/**
+	 * @Fields pic2 : 图片2
+	 */
+	private String pic2;
 
-    private Date created;
+	/**
+	 * @Fields content : 内容
+	 */
+	private String content;
 
-    private Date updated;
+	/**
+	 * @Fields created : 创建时间
+	 */
+	private Date created;
 
-    private String content;
+	/**
+	 * @Fields updated : 更新时间
+	 */
+	private Date updated;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getCategoryId() {
-        return categoryId;
-    }
+	public Long getCategoryId() {
+		return categoryId;
+	}
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getSubTitle() {
-        return subTitle;
-    }
+	public String getSubTitle() {
+		return subTitle;
+	}
 
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle == null ? null : subTitle.trim();
-    }
+	public void setSubTitle(String subTitle) {
+		this.subTitle = subTitle;
+	}
 
-    public String getTitleDesc() {
-        return titleDesc;
-    }
+	public String getTitleDesc() {
+		return titleDesc;
+	}
 
-    public void setTitleDesc(String titleDesc) {
-        this.titleDesc = titleDesc == null ? null : titleDesc.trim();
-    }
+	public void setTitleDesc(String titleDesc) {
+		this.titleDesc = titleDesc;
+	}
 
-    public String getUrl() {
-        return url;
-    }
+	public String getUrl() {
+		return url;
+	}
 
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
-    }
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    public String getPic() {
-        return pic;
-    }
+	public String getPic() {
+		return pic;
+	}
 
-    public void setPic(String pic) {
-        this.pic = pic == null ? null : pic.trim();
-    }
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 
-    public String getPic2() {
-        return pic2;
-    }
+	public String getPic2() {
+		return pic2;
+	}
 
-    public void setPic2(String pic2) {
-        this.pic2 = pic2 == null ? null : pic2.trim();
-    }
+	public void setPic2(String pic2) {
+		this.pic2 = pic2;
+	}
 
-    public Date getCreated() {
-        return created;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    public Date getUpdated() {
-        return updated;
-    }
+	public Date getCreated() {
+		return created;
+	}
 
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
+	public void setCreated(Date created) {
+		this.created = created;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public Date getUpdated() {
+		return updated;
+	}
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+
 }
