@@ -12,7 +12,7 @@ import org.mybatis.generator.internal.DefaultShellCallback;
  * @ClassName: GeneratorSqlmap
  * @Description: MyBatis逆向生成工具
  * @author Steven
- * @date 2019年2月23日 下午10:17:33
+ * @date 2019年2月23日  
  */
 public class GeneratorSqlUtil {
 
