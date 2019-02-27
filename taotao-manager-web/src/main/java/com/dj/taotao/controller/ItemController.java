@@ -10,12 +10,12 @@ import com.dj.taotao.pojo.EasyUIResult;
 import com.dj.taotao.pojo.TbItem;
 import com.dj.taotao.service.ItemService;
 
-/**
- * 商品管理Controller
- * 
- * @author dj673
- *
- */
+/** 
+* @ClassName: ItemController 
+* @Description: 商品管理Controller 
+* @author Steven 
+* @date 2019年2月27日  
+*/
 @Controller
 public class ItemController {
 

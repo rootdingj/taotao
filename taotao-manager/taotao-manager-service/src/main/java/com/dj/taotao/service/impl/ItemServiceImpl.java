@@ -13,12 +13,12 @@ import com.dj.taotao.service.ItemService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-/**
- * 商品管理Service
- * 
- * @author steven
- *
- */
+/** 
+* @ClassName: ItemServiceImpl 
+* @Description: 商品管理Service
+* @author Steven 
+* @date 2019年2月27日  
+*/
 @Service
 public class ItemServiceImpl implements ItemService {
 	
