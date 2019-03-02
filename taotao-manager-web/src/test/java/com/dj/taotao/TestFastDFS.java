@@ -7,6 +7,8 @@ import org.csource.fastdfs.TrackerClient;
 import org.csource.fastdfs.TrackerServer;
 import org.junit.Test;
 
+import com.dj.taotao.utils.FastDFSClient;
+
 public class TestFastDFS {
 
 	@Test
@@ -23,11 +25,18 @@ public class TestFastDFS {
 		StorageServer storageServer = null;
 		// 7、创建一个StorageClient对象。trackerserver、StorageServer两个参数
 		StorageClient storageClient = new StorageClient(trackerServer, storageServer);
-		// 8、使用StorageClient对象上传文件(win10:如果路径显示不存在就手敲)
+		// 8、使用StorageClient对象上传文件(win10:如果路径显示不存在就手敲,有隐藏字符)
 		String[] file = storageClient.upload_file("C:/Users/dj673/Pictures/1.png", "png", null);
 		for (String s : file) {
 			System.out.println(s);
 		}
+	}
+
+	@Test
+	public void testFastDFSClient() throws Exception {
+		FastDFSClient dfsClient = new FastDFSClient("D:/resource/workspace/taotao/taotao-manager-web/src/test/resources/client.conf");
+		String uploadFile = dfsClient.uploadFile("C:/Users/dj673/Desktop/2.png");
+		System.out.println("uploadFile: " + uploadFile);
 	}
 
 }
