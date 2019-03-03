@@ -1,6 +1,7 @@
 package com.dj.taotao.service;
 
 import com.dj.taotao.pojo.EasyUIResult;
+import com.dj.taotao.pojo.TaotaoResult;
 import com.dj.taotao.pojo.TbItem;
 
 public interface ItemService {
@@ -8,21 +9,26 @@ public interface ItemService {
 	/** 
 	* @Title: getItemById 
 	* @Description: 根据商品ID查询商品信息
-	* @param @param itemId
-	* @param @return  设定文件  
+	* @param itemId
 	* @return TbItem  返回类型  
-	* @throws 
 	*/
 	TbItem getItemById(long itemId);
 	/** 
 	* @Title: getItemList 
 	* @Description: 获取商品信息列表
-	* @param @param page
-	* @param @param rows
-	* @param @return  设定文件  
+	* @param page
+	* @param rows
 	* @return EasyUIResult  返回类型  
-	* @throws 
 	*/
 	EasyUIResult getItemList(int page,int rows);
+	
+	/** 
+	* @Title: addItem 
+	* @Description: 添加商品信息
+	* @param item
+	* @param desc
+	* @return EasyUIResult  返回类型  
+	*/
+	TaotaoResult addItem(TbItem item,String desc);
 
 }

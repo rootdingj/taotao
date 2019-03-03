@@ -4,18 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dj.taotao.pojo.EasyUIResult;
+import com.dj.taotao.pojo.TaotaoResult;
 import com.dj.taotao.pojo.TbItem;
 import com.dj.taotao.service.ItemService;
 
-/** 
-* @ClassName: ItemController 
-* @Description: 商品管理Controller 
-* @author Steven 
-* @date 2019年2月27日  
-*/
+/**
+ * @ClassName: ItemController
+ * @Description: 商品管理Controller
+ * @author Steven
+ * @date 2019年2月27日
+ */
 @Controller
 public class ItemController {
 
@@ -33,8 +35,14 @@ public class ItemController {
 	@RequestMapping("item/list")
 	@ResponseBody
 	public EasyUIResult getItemList(Integer page, Integer rows) {
-		
+
 		return itemService.getItemList(page, rows);
 	}
 
+	@RequestMapping(value = "item/save", method = RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult addItem(TbItem item, String desc) {
+		return itemService.addItem(item, desc);
+	}
+	
 }

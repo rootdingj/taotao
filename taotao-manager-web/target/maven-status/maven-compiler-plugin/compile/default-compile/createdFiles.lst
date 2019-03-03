@@ -1,3 +1,5 @@
+com\dj\taotao\controller\PageController.class
+com\dj\taotao\controller\PictureController.class
+com\dj\taotao\utils\FastDFSClient.class
 com\dj\taotao\controller\ItemCatController.class
 com\dj\taotao\controller\ItemController.class
-com\dj\taotao\controller\PageController.class
