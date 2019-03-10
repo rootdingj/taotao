@@ -40,5 +40,6 @@
 	<dubbo:reference interface="com.dj.taotao.service.ItemService" id="itemService" />
 	<dubbo:reference interface="com.dj.taotao.service.ItemCatService" id="itemCatService" />
 	<dubbo:reference interface="com.dj.taotao.content.service.ContentCategoryService" id="contentCategoryService" />
+	<dubbo:reference interface="com.dj.taotao.content.service.ContentService" id="contentService" />
 
 </beans>        
