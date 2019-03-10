@@ -36,7 +36,8 @@ public class ItemCatServiceImpl implements ItemCatService {
 			EasyUITreeNode node = new EasyUITreeNode();
 			node.setId(tbItemCat.getId());
 			node.setText(tbItemCat.getName());
-			node.setStatus(tbItemCat.getIsParent() ? "closed" : "open");
+//			node.setStatus(tbItemCat.getIsParent() ? "closed" : "open");
+			node.setStatus(tbItemCat.getIsParent() ? "open" : "closed");
 			resultList.add(node);
 		}
 		return resultList;

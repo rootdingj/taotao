@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dj.taotao.content.service.ContentCategoryService;
 import com.dj.taotao.pojo.EasyUITreeNode;
+import com.dj.taotao.pojo.TaotaoResult;
 
 /**
  * 
@@ -30,6 +31,12 @@ public class ContentCategoryController {
 
 		return contentCategoryService.getContentCategoryList(parentId);
 
+	}
+
+	@RequestMapping("/content/category/create")
+	@ResponseBody
+	public TaotaoResult addContentCategory(Long parentId, String name) {
+		return contentCategoryService.addContentCategory(parentId, name);
 	}
 
 }

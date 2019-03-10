@@ -6,17 +6,26 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TbContentCategoryMapper {
-    long countByExample(TbContentCategoryExample example);
+	int countByExample(TbContentCategoryExample example);
 
-    int deleteByExample(TbContentCategoryExample example);
+	int deleteByExample(TbContentCategoryExample example);
 
-    int insert(TbContentCategory record);
+	int deleteByPrimaryKey(Long id);
 
-    int insertSelective(TbContentCategory record);
+	int insert(TbContentCategory record);
 
-    List<TbContentCategory> selectByExample(TbContentCategoryExample example);
+	int insertSelective(TbContentCategory record);
 
-    int updateByExampleSelective(@Param("record") TbContentCategory record, @Param("example") TbContentCategoryExample example);
+	List<TbContentCategory> selectByExample(TbContentCategoryExample example);
 
-    int updateByExample(@Param("record") TbContentCategory record, @Param("example") TbContentCategoryExample example);
+	TbContentCategory selectByPrimaryKey(Long id);
+
+	int updateByExampleSelective(@Param("record") TbContentCategory record,
+			@Param("example") TbContentCategoryExample example);
+
+	int updateByExample(@Param("record") TbContentCategory record, @Param("example") TbContentCategoryExample example);
+
+	int updateByPrimaryKeySelective(TbContentCategory record);
+
+	int updateByPrimaryKey(TbContentCategory record);
 }

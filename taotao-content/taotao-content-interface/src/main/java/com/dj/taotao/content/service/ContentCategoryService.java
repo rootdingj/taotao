@@ -3,6 +3,7 @@ package com.dj.taotao.content.service;
 import java.util.List;
 
 import com.dj.taotao.pojo.EasyUITreeNode;
+import com.dj.taotao.pojo.TaotaoResult;
 
 /** 
  * @ClassName: ContentCategoryService 
@@ -19,5 +20,14 @@ public interface ContentCategoryService {
 	 * @return List<EasyUITreeNode>  返回类型  
 	 */
 	List<EasyUITreeNode> getContentCategoryList(long parentId);
+	
+	/** 
+	 * @Title: addContentCategory 
+	 * @Description: 新增内容分类
+	 * @param parentId
+	 * @param name
+	 * @return TaotaoResult  返回类型  
+	 */
+	TaotaoResult addContentCategory(long parentId,String name);
 
 }
