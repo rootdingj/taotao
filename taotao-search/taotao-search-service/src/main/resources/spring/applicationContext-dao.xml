@@ -35,7 +35,7 @@
 	</bean>
 	<!-- 4.Mapper映射文件的包扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.dj.taotao.mapper" />
+		<property name="basePackage" value="com.dj.taotao.mapper,com.dj.taotao.search.mapper" />
 	</bean>
 
 </beans>	
