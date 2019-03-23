@@ -30,6 +30,7 @@ public class SearchController {
 	@RequestMapping("/search")
 	public String search(@RequestParam("q") String queryStr, @RequestParam(defaultValue = "1") Integer page,
 			Model model) {
+//		int i = 1/0;
 		try {
 			queryStr = new String(queryStr.getBytes("iso8859-1"), "utf-8");
 			SearchResult result = searchService.search(queryStr, page, rows);

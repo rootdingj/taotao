@@ -20,6 +20,8 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	<!-- 全局异常处理器 -->
+	<bean class="com.dj.taotao.search.exception.GlobalExceptionResolver"/>
 	<!-- 配置包扫描器，扫描带@Controller注解的类 -->
 	<context:component-scan base-package="com.dj.taotao.search.controller" />
 	<!-- 引用dubbo服务 -->
