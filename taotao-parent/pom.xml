@@ -36,6 +36,9 @@
 		<dubbo.version>2.5.3</dubbo.version>
 		<zookeeper.version>3.4.7</zookeeper.version>
 		<zkclient.version>0.1</zkclient.version>
+		<activemq.version>5.11.2</activemq.version>
+		<freemarker.version>2.3.23</freemarker.version>
+		<quartz.version>2.2.2</quartz.version>
 	</properties>
 
 	<!-- 只定义依赖的版本，并不实际依赖 -->
@@ -154,6 +157,16 @@
 				<artifactId>spring-aspects</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 			<!-- JSP相关 -->
 			<dependency>
 				<groupId>jstl</groupId>
@@ -205,6 +218,24 @@
 				<groupId>com.github.sgroschupf</groupId>
 				<artifactId>zkclient</artifactId>
 				<version>${zkclient.version}</version>
+			</dependency>
+			<!-- activeMQ -->
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-all</artifactId>
+				<version>${activemq.version}</version>
+			</dependency>
+			<!-- freemarker -->
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>${freemarker.version}</version>
+			</dependency>
+			<!-- quartz任务调度框架 -->
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${quartz.version}</version>
 			</dependency>
 
 		</dependencies>
