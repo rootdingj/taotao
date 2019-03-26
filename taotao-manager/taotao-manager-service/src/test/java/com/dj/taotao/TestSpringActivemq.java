@@ -13,7 +13,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
 public class TestSpringActivemq {
-	
+	//使用JmsTemplate发送消息
 	@Test
 	public void testJmsTemplate() throws Exception{
 		ApplicationContext context = 
@@ -25,6 +25,7 @@ public class TestSpringActivemq {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
 				TextMessage message = session.createTextMessage("spring activemq queue test");
+				System.out.println("客户端发送消息： spring activemq queue test");
 				return message;
 			}
 		});

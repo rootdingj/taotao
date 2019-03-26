@@ -18,10 +18,6 @@
 	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory" >
 		<property name="targetConnectionFactory" ref="targetConnectionFactory"/>
 	</bean>
-	<!-- 配置JmsTemplate -->
-	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-		<property name="connectionFactory" ref="connectionFactory"/>
-	</bean>
 	<!-- 配置消息的destination -->
 	<bean id="test-queue" class="org.apache.activemq.command.ActiveMQQueue">
 		<constructor-arg name="name" value="test-queue"/>
@@ -29,6 +25,12 @@
 	<bean id="test-topic" class="org.apache.activemq.command.ActiveMQTopic">
 		<constructor-arg name="name" value="test-topic"/>
 	</bean>
-	
+	<!-- 配置消息的接收者 -->
+	<bean id="myMessageListener" class="com.dj.taotao.search.listener.MyMessageListener"/>
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory"/>
+		<property name="destination" ref="test-queue"/>
+		<property name="messageListener" ref="myMessageListener"/>
+	</bean>
 
 </beans>	
