@@ -22,8 +22,8 @@
 	<bean id="test-queue" class="org.apache.activemq.command.ActiveMQQueue">
 		<constructor-arg name="name" value="test-queue"/>
 	</bean>
-	<bean id="test-topic" class="org.apache.activemq.command.ActiveMQTopic">
-		<constructor-arg name="name" value="test-topic"/>
+	<bean id="itemAddtopic" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg name="name" value="item-add-topic"/>
 	</bean>
 	<!-- 配置消息的接收者 -->
 	<bean id="myMessageListener" class="com.dj.taotao.search.listener.MyMessageListener"/>
@@ -31,6 +31,13 @@
 		<property name="connectionFactory" ref="connectionFactory"/>
 		<property name="destination" ref="test-queue"/>
 		<property name="messageListener" ref="myMessageListener"/>
+	</bean>
+	
+	<bean id="itemAddMessageListener" class="com.taotao.search.listener.ItemAddMessageListener"/>
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="destination" ref="itemAddTopic" />
+		<property name="messageListener" ref="itemAddMessageListener" />
 	</bean>
 
 </beans>	

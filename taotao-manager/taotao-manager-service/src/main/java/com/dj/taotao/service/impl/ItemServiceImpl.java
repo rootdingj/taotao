@@ -3,7 +3,16 @@ package com.dj.taotao.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
 import com.dj.taotao.mapper.TbItemDescMapper;
@@ -29,9 +38,12 @@ public class ItemServiceImpl implements ItemService {
 
 	@Autowired
 	private TbItemMapper itemMapper;
-
 	@Autowired
 	private TbItemDescMapper itemDescMapper;
+	@Autowired
+	private JmsTemplate jmsTemplate;
+	@Resource(name = "itemAddtopic")
+	private Destination destination;
 
 	@Override
 	public TbItem getItemById(long itemId) {
@@ -58,7 +70,7 @@ public class ItemServiceImpl implements ItemService {
 	public TaotaoResult addItem(TbItem item, String desc) {
 		Date date = new Date();
 		// 生成商品ID
-		long itemId = IDUtils.genItemId();
+		final long itemId = IDUtils.genItemId();
 		// 补全item属性
 		item.setId(itemId);
 		// 商品状态，1-正常，2-下架，3-删除
@@ -75,6 +87,15 @@ public class ItemServiceImpl implements ItemService {
 		itemDesc.setCreated(date);
 		itemDesc.setUpdated(date);
 		itemDescMapper.insert(itemDesc);
+		//想activemq发送商品添加消息
+		jmsTemplate.send(destination, new MessageCreator() {
+			
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				// 发送商品的ID
+				return session.createTextMessage(itemId+"");
+			}
+		});
 		return TaotaoResult.ok();
 	}
 
