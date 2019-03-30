@@ -8,7 +8,6 @@ import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
-import javax.jms.TextMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
@@ -97,6 +96,12 @@ public class ItemServiceImpl implements ItemService {
 			}
 		});
 		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TbItemDesc getItemDescById(long itemId) {
+		
+		return itemDescMapper.selectByPrimaryKey(itemId);
 	}
 
 }

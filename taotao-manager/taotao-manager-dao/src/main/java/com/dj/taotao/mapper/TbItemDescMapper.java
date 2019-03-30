@@ -13,6 +13,8 @@ public interface TbItemDescMapper {
     int insert(TbItemDesc record);
 
     int insertSelective(TbItemDesc record);
+    
+    TbItemDesc selectByPrimaryKey(Long itemId);
 
     List<TbItemDesc> selectByExampleWithBLOBs(TbItemDescExample example);
 

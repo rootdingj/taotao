@@ -3,6 +3,7 @@ package com.dj.taotao.service;
 import com.dj.taotao.pojo.EasyUIResult;
 import com.dj.taotao.pojo.TaotaoResult;
 import com.dj.taotao.pojo.TbItem;
+import com.dj.taotao.pojo.TbItemDesc;
 
 public interface ItemService {
 	
@@ -30,5 +31,13 @@ public interface ItemService {
 	* @return EasyUIResult  返回类型  
 	*/
 	TaotaoResult addItem(TbItem item,String desc);
+	
+	/** 
+	* @Title: getItemDescById 
+	* @Description: 根据商品ID查询商品描述信息
+	* @param itemId
+	* @return TbItem  返回类型  
+	*/
+	TbItemDesc getItemDescById(long itemId);
 
 }

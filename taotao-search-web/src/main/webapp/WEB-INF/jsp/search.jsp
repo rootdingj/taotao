@@ -72,7 +72,7 @@
 <script type="text/javascript">
 //${paginator.totalPages}
 SEARCH.query = "${query}";
-SEARCH.bottom_page_html(${page},${totalPages},'');
+SEARCH.bottom_page_html("${page}","${totalPages}",'');
 </script>
 </body>
 </html>
