@@ -22,6 +22,11 @@
 	</bean>
 	<!-- 配置包扫描器，扫描带@Controller注解的类 -->
 	<context:component-scan base-package="com.dj.taotao.item.controller" />
+	<!-- freemarker的配置 -->
+	<bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/ftl/"/>
+		<property name="defaultEncoding" value="utf-8"></property>
+	</bean>
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="taotao-item-web" />
 	<dubbo:registry protocol="zookeeper" address="47.106.125.36:2181" />
