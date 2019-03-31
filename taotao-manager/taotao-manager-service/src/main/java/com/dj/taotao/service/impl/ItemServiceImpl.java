@@ -9,11 +9,14 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
+import com.dj.taotao.jedis.JedisClient;
 import com.dj.taotao.mapper.TbItemDescMapper;
 import com.dj.taotao.mapper.TbItemMapper;
 import com.dj.taotao.pojo.EasyUIResult;
@@ -23,6 +26,7 @@ import com.dj.taotao.pojo.TbItemDesc;
 import com.dj.taotao.pojo.TbItemExample;
 import com.dj.taotao.service.ItemService;
 import com.dj.taotao.utils.IDUtils;
+import com.dj.taotao.utils.JsonUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -43,11 +47,39 @@ public class ItemServiceImpl implements ItemService {
 	private JmsTemplate jmsTemplate;
 	@Resource(name = "itemAddtopic")
 	private Destination destination;
+	@Autowired
+	private JedisClient jedisClient;
+	@Value("${ITEM_INFO}")
+	private String ITEM_INFO;
+	@Value("${TIEM_EXPIRE}")
+	private Integer TIEM_EXPIRE;
 
 	@Override
 	public TbItem getItemById(long itemId) {
-
-		return itemMapper.selectByPrimaryKey(itemId);
+		// 查询数据库之前先查询缓存
+		TbItem tbItem = null;
+		String baseKey = ITEM_INFO + ":" + itemId + ":BASE";
+		try {
+			String json = jedisClient.get(baseKey);
+			if (StringUtils.isNotBlank(json)) {
+				// 把json数据转换成pojo
+				tbItem = JsonUtils.jsonToPojo(json, TbItem.class);
+				return tbItem;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 缓存中没有查询数据库
+		tbItem = itemMapper.selectByPrimaryKey(itemId);
+		try {
+			// 把查询结果添加到缓存
+			jedisClient.set(baseKey, JsonUtils.objectToJson(tbItem));
+			// 设置过期时间，提高缓存的利用率
+			jedisClient.expire(baseKey, TIEM_EXPIRE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tbItem;
 	}
 
 	@Override
@@ -86,13 +118,13 @@ public class ItemServiceImpl implements ItemService {
 		itemDesc.setCreated(date);
 		itemDesc.setUpdated(date);
 		itemDescMapper.insert(itemDesc);
-		//想activemq发送商品添加消息
+		// 想activemq发送商品添加消息
 		jmsTemplate.send(destination, new MessageCreator() {
-			
+
 			@Override
 			public Message createMessage(Session session) throws JMSException {
 				// 发送商品的ID
-				return session.createTextMessage(itemId+"");
+				return session.createTextMessage(itemId + "");
 			}
 		});
 		return TaotaoResult.ok();
@@ -100,8 +132,30 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public TbItemDesc getItemDescById(long itemId) {
-		
-		return itemDescMapper.selectByPrimaryKey(itemId);
+		// 查询数据库之前先查询缓存
+		TbItemDesc itemDesc = null;
+		String descKey = ITEM_INFO + ":" + itemId + ":DESC";
+		try {
+			String json = jedisClient.get(descKey);
+			if (StringUtils.isNotBlank(json)) {
+				// 把json数据转换成pojo
+				itemDesc = JsonUtils.jsonToPojo(json, TbItemDesc.class);
+				return itemDesc;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// 缓存中没有查询数据库
+		itemDesc = itemDescMapper.selectByPrimaryKey(itemId);
+		try {
+			// 把查询结果添加到缓存
+			jedisClient.set(descKey, JsonUtils.objectToJson(itemDesc));
+			// 设置过期时间，提高缓存的利用率
+			jedisClient.expire(descKey, TIEM_EXPIRE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return itemDesc;
 	}
 
 }
