@@ -22,6 +22,6 @@
 	<!-- 用dubbo协议在20883端口暴露服务 -->
 	<dubbo:protocol name="dubbo" port="20883" />
 	<!-- 声明需要暴露的服务接口 -->
-	<!-- <dubbo:service interface="com.dj.taotao.content.service.ContentService" ref="contentServiceImpl" timeout="300000" /> -->
+	<dubbo:service interface="com.dj.taotao.sso.service.UserService" ref="userServiceImpl" timeout="300000" />
 
 </beans>	
