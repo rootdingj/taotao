@@ -1,21 +1,24 @@
 package com.dj.taotao.sso.service.impl;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
 import com.alibaba.dubbo.common.utils.StringUtils;
+import com.dj.taotao.jedis.JedisClient;
 import com.dj.taotao.mapper.TbUserMapper;
 import com.dj.taotao.pojo.TaotaoResult;
 import com.dj.taotao.pojo.TbUser;
 import com.dj.taotao.pojo.TbUserExample;
 import com.dj.taotao.pojo.TbUserExample.Criteria;
 import com.dj.taotao.sso.service.UserService;
+import com.dj.taotao.utils.JsonUtils;
 
 /**
  * 
@@ -29,6 +32,12 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private TbUserMapper userMapper;
+	@Autowired
+	private JedisClient jedisClient;
+	@Value("${USER_SESSION}")
+	private String USER_SESSION;
+	@Value("${SESSION_EXPIRE}")
+	private Integer SESSION_EXPIRE;
 
 	@Override
 	public TaotaoResult checkData(String param, int type) {
@@ -86,6 +95,28 @@ public class UserServiceImpl implements UserService {
 		user.setUpdated(new Date());
 		user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
 		return TaotaoResult.ok("注册成！");
+	}
+
+	@Override
+	public TaotaoResult login(String username, String password) {
+		// 判断用户名、密码是否正确
+		TbUserExample example = new TbUserExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUsernameEqualTo(username);
+		List<TbUser> list = userMapper.selectByExample(example);
+		if (CollectionUtils.isEmpty(list)) {
+			return TaotaoResult.build(400, "用户名或密码不正确");
+		}
+		TbUser user = list.get(0);
+		user.setPassword(null);
+		// 使用UUID生成token
+		String token = UUID.randomUUID().toString();
+		// 把用户信息保存到redis中，key就是token，value为用户信息
+		jedisClient.set(USER_SESSION + ":" + token, JsonUtils.objectToJson(user));
+		// 设置key的过期时间
+		jedisClient.expire(USER_SESSION + ":" + token, SESSION_EXPIRE);
+		// 返回登录成功，并把token返回
+		return TaotaoResult.ok(token);
 	}
 
 }
