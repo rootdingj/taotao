@@ -25,11 +25,11 @@ import com.dj.taotao.utils.CookieUtils;
  */
 @Controller
 public class UserController {
-	
+
 	@Value("${TOKEN_KEY}")
 	private String TOKEN_KEY;
 
-	@Autowired	
+	@Autowired
 	private UserService userService;
 
 	@RequestMapping("/user/check/{param}/{type}")
@@ -57,6 +57,13 @@ public class UserController {
 			CookieUtils.setCookie(request, response, TOKEN_KEY, result.getData().toString());
 		}
 		return result;
+	}
+
+	@RequestMapping(value = "/user/token/{token}", method = RequestMethod.GET)
+	@ResponseBody
+	public TaotaoResult getUserByToken(@PathVariable String token) {
+		
+		return userService.getUserByToken(token);
 	}
 
 }

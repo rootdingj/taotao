@@ -22,6 +22,10 @@
 	</bean>
 	<!-- 配置包扫描器，扫描带@Controller注解的类 -->
 	<context:component-scan base-package="com.dj.taotao.sso.controller" />
+	<!-- 配置资源映射 -->
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+	<mvc:resources location="/WEB-INF/images/" mapping="/images/**"/>
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="taotao-sso-web" />
 	<dubbo:registry protocol="zookeeper" address="47.106.125.36:2181" />

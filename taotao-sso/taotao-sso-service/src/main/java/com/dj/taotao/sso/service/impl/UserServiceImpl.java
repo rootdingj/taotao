@@ -94,7 +94,9 @@ public class UserServiceImpl implements UserService {
 		user.setCreated(new Date());
 		user.setUpdated(new Date());
 		user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
-		return TaotaoResult.ok("注册成！");
+		//插入数据
+		userMapper.insert(user);
+		return TaotaoResult.ok("注册成功！");
 	}
 
 	@Override
@@ -117,6 +119,18 @@ public class UserServiceImpl implements UserService {
 		jedisClient.expire(USER_SESSION + ":" + token, SESSION_EXPIRE);
 		// 返回登录成功，并把token返回
 		return TaotaoResult.ok(token);
+	}
+
+	@Override
+	public TaotaoResult getUserByToken(String token) {
+		String json = jedisClient.get(USER_SESSION + ":" + token);
+		if (StringUtils.isBlank(json)) {
+			return TaotaoResult.build(400, "用户登录已过期");
+		}
+		// 重置key的过期时间
+		jedisClient.expire(USER_SESSION + ":" + token, SESSION_EXPIRE);
+		TbUser tbUser = JsonUtils.jsonToPojo(json, TbUser.class);
+		return TaotaoResult.ok(tbUser);
 	}
 
 }
