@@ -3,8 +3,11 @@ package com.dj.taotao.sso.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +18,7 @@ import com.dj.taotao.pojo.TaotaoResult;
 import com.dj.taotao.pojo.TbUser;
 import com.dj.taotao.sso.service.UserService;
 import com.dj.taotao.utils.CookieUtils;
+import com.dj.taotao.utils.JsonUtils;
 
 /**
  * 
@@ -59,11 +63,30 @@ public class UserController {
 		return result;
 	}
 
+	/*
+	 * @RequestMapping(value = "/user/token/{token}", method = RequestMethod.GET, //
+	 * 指定返回响应数据的content-type produces = MediaType.APPLICATION_JSON_VALUE)
+	 * 
+	 * @ResponseBody public String getUserByToken(@PathVariable String token,String
+	 * callback) { TaotaoResult result = userService.getUserByToken(token);
+	 * //判断是否为jsonp请求 if (StringUtils.isNotBlank(callback)) { return callback + "("
+	 * + JsonUtils.objectToJson(result) + ");"; } return
+	 * JsonUtils.objectToJson(result); }
+	 */
+
+	// jsonp的第二种方法，spring4.1以上版本使用
 	@RequestMapping(value = "/user/token/{token}", method = RequestMethod.GET)
 	@ResponseBody
-	public TaotaoResult getUserByToken(@PathVariable String token) {
-		
-		return userService.getUserByToken(token);
+	public Object getUserByToken(@PathVariable String token, String callback) {
+		TaotaoResult result = userService.getUserByToken(token);
+		// 判断是否为jsonp请求
+		if (StringUtils.isNotBlank(callback)) {
+			MappingJacksonValue value = new MappingJacksonValue(result);
+			// 设置回调方法
+			value.setJsonpFunction(callback);
+			return value;
+		}
+		return result;
 	}
 
 }
